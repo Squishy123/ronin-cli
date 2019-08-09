@@ -9,9 +9,10 @@
   "dependencies": {
     "camelcase": "^5.3.1",
     "chalk": "^2.4.2",
-    "inquirer": "^6.5.0"
+    "inquirer": "^6.5.0",
+    "simple-git": "^1.124.0"
   },
   "bin": {
-    "ronin": "./cli.js"
+    "ronin": "./src/cli.js"
   }
 }
