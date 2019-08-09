@@ -21,6 +21,9 @@ Usage: ronin make:[cmd] [args]
 
 Supported Commands: migration, model, route`;
 
+const INIT_HELP = `
+Usage: ronin new [projectName]   OR   ronin new`;
+
 module.exports = {
     displayBanner: () => {
         console.log(BANNER);
@@ -30,5 +33,8 @@ module.exports = {
     },
     displayMakeHelp: () => {
         console.log(BANNER + VERSION + MAKE_HELP);
+    },
+    displayInitHelp: () => {
+        console.log(BANNER + VERSION + INIT_HELP);
     }
 }

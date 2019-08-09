@@ -1,6 +1,8 @@
 const inquirer = require('inquirer');
-const { execAsync } = require('../helpers/async-node');
+const { execStream } = require('../helpers/async-node');
 const git = require('simple-git');
+
+const gui = require('../helpers/gui');
 
 module.exports = async (args) => {
     try {
@@ -18,10 +20,10 @@ module.exports = async (args) => {
             }
             //clone repo
             //await git().silent(true).clone('https://github.com/Squishy123/ronin.git', `./${name}`);
-            await execAsync(`git clone https://github.com/Squishy123/ronin.git ./${name}`);
+            await execStream(`git clone https://github.com/Squishy123/ronin.git ./${name} --progress`);
 
             //install dependencies
-            await execAsync(`cd ${name} && yarn`);
+            await execStream(`cd ${name} && yarn`);
 
             console.log(`
 Ronin Project Created Successfully!
@@ -29,8 +31,7 @@ cd ${name}
 and run 
 ronin start`)
         } else {            
-
-            console.log(`Usage: ronin new [projectName]`)
+            gui.displayInitHelp();
         } 
 
     } catch (err) {
