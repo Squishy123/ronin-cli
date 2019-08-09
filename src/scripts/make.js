@@ -1,15 +1,13 @@
 const templates = require('./templates/make');
 const fs = require('fs');
 const camelCase = require('camelcase');
+const gui = require('../helpers/gui');
 
 
 module.exports = (args) => {
     //null
     if (args[0] === 'make') {
-        console.log(
-            `Usage: ronin make:[cmd] [args]
-
-Supported Commands: migration, model, route`);
+        gui.displayMakeHelp();
     }
 
     //make:migration %NAME%

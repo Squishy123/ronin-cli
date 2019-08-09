@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const { execAsync } = require('./helpers/async-node');
+const { execAsync } = require('../helpers/async-node');
 const git = require('simple-git');
 
 module.exports = async (args) => {
@@ -28,7 +28,10 @@ Ronin Project Created Successfully!
 cd ${name}
 and run 
 ronin start`)
-        }
+        } else {            
+
+            console.log(`Usage: ronin new [projectName]`)
+        } 
 
     } catch (err) {
         console.error(`Error: ${err}`);
