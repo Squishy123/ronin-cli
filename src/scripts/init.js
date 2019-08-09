@@ -35,6 +35,6 @@ ronin start`)
         } 
 
     } catch (err) {
-        console.error(`Error: ${err}`);
+        gui.displayError(err);
     }
 }
