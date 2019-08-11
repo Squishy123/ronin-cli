@@ -14,5 +14,11 @@
   },
   "bin": {
     "ronin": "./src/cli.js"
+  },
+  "devDependencies": {
+    "prettier": "^1.18.2"
+  },
+  "scripts": {
+    "format": "prettier --write \"src/**/*.{js,jsx,json}\""
   }
 }

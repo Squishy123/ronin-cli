@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const init = require('./scripts/init');
-const make = require("./scripts/make");
-const list = require("./scripts/list");
+const make = require('./scripts/make');
+const list = require('./scripts/list');
 
 const gui = require('./helpers/gui');
 
@@ -20,4 +20,3 @@ const [, , ...args] = process.argv;
         list(args);
     }
 })();
-
