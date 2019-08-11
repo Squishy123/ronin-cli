@@ -1,4 +1,4 @@
-# Ronin-cli ⚔️
+# Ronin-CLI ⚔️
 > CLI Tools for Development with the Ronin Framework
 
 ![version](https://img.shields.io/badge/version-0.0.1b-brightgreen.svg?style=flat-square) ![docs](https://img.shields.io/badge/docs-coming%20soon-orange.svg?style=flat-square)
