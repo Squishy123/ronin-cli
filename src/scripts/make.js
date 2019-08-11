@@ -128,6 +128,6 @@ module.exports = args => {
         });
         console.log(`Route Successfully Created!`);
     } else {
-        console.error('Error: Cmd Invalid!');
+        console.error('Error: Component Invalid!');
     }
 };

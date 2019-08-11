@@ -21,7 +21,7 @@ Supported Commands: new, make, list, delete, test, build`
 
 const MAKE_HELP = chalk.whiteBright(
     `
-Usage: ronin make:[cmd] [args]
+Usage: ronin make:[component] [args]
 
 Supported Commands: migration, model, route`
 );
