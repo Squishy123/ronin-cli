@@ -28,7 +28,7 @@ ronin new
 
 ### Making new ronin components
 ```
-ronin make:[components] [args]
+ronin make:[component] [args]
 ```
 Supported Components: migration, model, route, module
 
