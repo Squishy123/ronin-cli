@@ -18,19 +18,23 @@ yarn global add ronin-cli
 
 ## Usage
 ### Creating a new Ronin Project
-```
+```console
 ronin new [projectName]
 ```
 ### or
-```
+```console
 ronin new 
 ```
 
 ### Making new ronin components
-```
+```console
 ronin make:[component] [args]
 ```
 Supported Components: migration, model, route, module
+
+## Docs
+### Take a look at the documentation
+- ## [General Overview](docs/GENERAL.md)
 
 # 🚧 UNDER CONSTRUCTION 🚧
 ## More coming soon!
