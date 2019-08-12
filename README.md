@@ -34,7 +34,7 @@ Supported Components: migration, model, route, module
 
 ## Docs
 ### Take a look at the documentation
-- ## [General Overview](docs/GENERAL.md)
+## - [General Overview](docs/GENERAL.md)
 
 # 🚧 UNDER CONSTRUCTION 🚧
 ## More coming soon!
