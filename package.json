@@ -1,8 +1,15 @@
 {
   "name": "ronin-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "CLI Tools for Development with the Ronin Framework",
-  "main": "cli.js",
+  "keywords": [
+    "js",
+    "expressjs",
+    "nodejs",
+    "developer-tools",
+    "samurai-coding"
+  ],
+  "main": "src/cli.js",
   "repository": "https://github.com/Squishy123/ronin-cli.git",
   "author": "squishy123 <christian.gnaw@gmail.com>",
   "license": "AGPL-3.0",
