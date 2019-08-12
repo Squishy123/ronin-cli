@@ -12,16 +12,16 @@ Supported Queries: all, migration, model, route`
 
     if (args[0] == 'list:all') {
 
-        console.log(chalk.redBright("MODELS:"))
+        console.log(chalk.greenBright("Models:"))
         db.get('models').value().forEach(m => console.log(m));
 
-        console.log(chalk.redBright("MIGRATIONS:"))
+        console.log(chalk.greenBright("Migrations:"))
         db.get('migrations').get('order').value().forEach(m => console.log(m));
 
-        console.log(chalk.redBright("MODULES:"))
+        console.log(chalk.greenBright("Modules:"))
         db.get('modules').value().forEach(m => console.log(m));
 
-        console.log(chalk.redBright("ROUTES:"))
+        console.log(chalk.greenBright("Routes:"))
         db.get('routes').value().forEach(m => console.log(m));
     }
 };

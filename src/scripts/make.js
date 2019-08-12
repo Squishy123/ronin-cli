@@ -61,7 +61,7 @@ module.exports = args => {
             createdAt: new Date()
         }).write();
         
-        console.log(`${chalk.redBright('Migration')} Successfully Created!`);
+        console.log(`${chalk.greenBright('Migration')} Successfully Created!`);
     }
 
     //make:model %NAME%
@@ -111,7 +111,7 @@ module.exports = args => {
             createdAt: new Date()
         }).write();
 
-        console.log(`${chalk.redBright('Model')} Successfully Created!`);
+        console.log(`${chalk.greenBright('Model')} Successfully Created!`);
     }
 
     //make:route %NAME% %METHOD% %PATH
@@ -150,7 +150,7 @@ module.exports = args => {
             createdAt: new Date()
         }).write();
 
-        console.log(`${chalk.redBright('Route')} Successfully Created!`);
+        console.log(`${chalk.greenBright('Route')} Successfully Created!`);
     } else {
         gui.displayError('Component Invalid!');
     }
