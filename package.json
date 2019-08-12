@@ -17,6 +17,7 @@
     "camelcase": "^5.3.1",
     "chalk": "^2.4.2",
     "inquirer": "^6.5.0",
+    "lowdb": "^1.0.0",
     "simple-git": "^1.124.0"
   },
   "bin": {

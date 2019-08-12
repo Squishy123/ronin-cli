@@ -1,7 +1,9 @@
 const templates = require('./templates/make');
 const fs = require('fs');
 const camelCase = require('camelcase');
+
 const gui = require('../helpers/gui');
+const db = require('../helpers/db');
 
 module.exports = args => {
     //null
@@ -51,6 +53,13 @@ module.exports = args => {
             migration,
             { flag: 'wx' }
         );
+
+        db.get('migrations').get('order').push({
+            name: camelCase(args[1]),
+            path: `src/server/migrations/${camelCase(args[1])}.js`,
+            createdAt: new Date()
+        }).write();
+        
         console.log(`Migration Successfully Created!`);
     }
 
@@ -94,6 +103,13 @@ module.exports = args => {
         fs.writeFileSync(`./src/app/models/${camelCase(args[1])}.js`, model, {
             flag: 'wx',
         });
+
+        db.get('models').push({
+            name: camelCase(args[1]),
+            path: `src/app/models/${camelCase(args[1])}.js`,
+            createdAt: new Date()
+        }).write();
+
         console.log(`Model Successfully Created!`);
     }
 
@@ -126,6 +142,13 @@ module.exports = args => {
         fs.writeFileSync(`./src/app/routes/${camelCase(args[1])}.js`, model, {
             flag: 'wx',
         });
+
+        db.get('routes').push({
+            name: camelCase(args[1]),
+            path: `src/app/routes/${camelCase(args[1])}.js`,
+            createdAt: new Date()
+        }).write();
+
         console.log(`Route Successfully Created!`);
     } else {
         console.error('Error: Component Invalid!');
