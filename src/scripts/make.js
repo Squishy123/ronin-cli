@@ -1,6 +1,7 @@
 const templates = require('./templates/make');
 const fs = require('fs');
 const camelCase = require('camelcase');
+const chalk = require('chalk');
 
 const gui = require('../helpers/gui');
 const db = require('../helpers/db');
@@ -13,7 +14,7 @@ module.exports = args => {
 
     //make:migration %NAME%
     else if (args[0] === 'make:migration') {
-        if (!args[1]) console.error('Error: No Name Specified.');
+        if (!args[1]) gui.displayError('No Name Specified.');
 
         let migration = templates.MAKE_MIGRATION;
 
@@ -60,12 +61,12 @@ module.exports = args => {
             createdAt: new Date()
         }).write();
         
-        console.log(`Migration Successfully Created!`);
+        console.log(`${chalk.redBright('Migration')} Successfully Created!`);
     }
 
     //make:model %NAME%
     else if (args[0] === 'make:model') {
-        if (!args[1]) console.error('Error: No Name Specified.');
+        if (!args[1]) gui.displayError('No Name Specified.');
 
         let model = templates.MAKE_MODEL;
 
@@ -110,12 +111,12 @@ module.exports = args => {
             createdAt: new Date()
         }).write();
 
-        console.log(`Model Successfully Created!`);
+        console.log(`${chalk.redBright('Model')} Successfully Created!`);
     }
 
     //make:route %NAME% %METHOD% %PATH
     else if (args[0] === 'make:route') {
-        if (!args[1]) console.error('Error: No Name Specified.');
+        if (!args[1]) gui.displayError('No Name Specified.');
 
         let model = templates.MAKE_ROUTE;
         model = model
@@ -149,8 +150,8 @@ module.exports = args => {
             createdAt: new Date()
         }).write();
 
-        console.log(`Route Successfully Created!`);
+        console.log(`${chalk.redBright('Route')} Successfully Created!`);
     } else {
-        console.error('Error: Component Invalid!');
+        gui.displayError('Component Invalid!');
     }
 };
