@@ -30,3 +30,9 @@ export default {
     path: "%PATH%",
     handler: []
 }`;
+
+exports.MAKE_MODULE = `
+export default () => {
+    //Module
+}
+`;

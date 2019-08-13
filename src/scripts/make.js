@@ -60,7 +60,7 @@ module.exports = args => {
             path: `src/server/migrations/${camelCase(args[1])}.js`,
             createdAt: new Date()
         }).write();
-        
+
         console.log(`${chalk.greenBright('Migration')} Successfully Created!`);
     }
 
@@ -151,6 +151,41 @@ module.exports = args => {
         }).write();
 
         console.log(`${chalk.greenBright('Route')} Successfully Created!`);
+    }
+
+    else if (args[0] === 'make:module') {
+        if (!args[1]) gui.displayError('No Name Specified.');
+
+        let model = templates.MAKE_MODULE;
+
+        if (
+            !fs.existsSync(
+                `./src/server/modules/${camelCase(args[1]).substr(
+                    0,
+                    args[1].lastIndexOf('/')
+                )}`
+            )
+        ) {
+            fs.mkdirSync(
+                `./src/server/modules/${camelCase(args[1]).substr(
+                    0,
+                    args[1].lastIndexOf('/')
+                )}`,
+                { recursive: true }
+            );
+        }
+
+        fs.writeFileSync(`./src/server/modules/${camelCase(args[1])}.js`, model, {
+            flag: 'wx',
+        });
+
+        db.get('modules').push({
+            name: camelCase(args[1]),
+            path: `src/server/modules/${camelCase(args[1])}.js`,
+            createdAt: new Date()
+        }).write();
+
+        console.log(`${chalk.greenBright('Module')} Successfully Created!`);
     } else {
         gui.displayError('Component Invalid!');
     }
