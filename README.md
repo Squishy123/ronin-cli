@@ -32,6 +32,12 @@ ronin make:[component] [args]
 ```
 Supported Components: migration, model, route, module
 
+### Deleting ronin components
+```console
+ronin delete:[query]
+```
+Supported Queries: select, migrations, models, modules, middlewares, routes
+
 ## Docs
 ### Take a look at the documentation
 ## - [General Overview](docs/GENERAL.md)
