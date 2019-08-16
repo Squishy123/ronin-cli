@@ -16,15 +16,15 @@ module.exports = args => {
     else if (args[0] === 'make:migration') {
         if (!args[1]) gui.displayError('No Name Specified.');
 
-        let migration = templates.MAKE_MIGRATION;
+        let template = templates.MAKE_MIGRATION;
 
         if (args[1].lastIndexOf('/') == -1) {
-            migration = migration.replace(
+            template = template.replace(
                 /%MIGRATION%/g,
                 camelCase(args[1], { pascalCase: true })
             );
         } else {
-            migration = migration.replace(
+            template = template.replace(
                 /%MIGRATION%/g,
                 camelCase(args[1].substr(args[1].lastIndexOf('/') + 1), {
                     pascalCase: true,
@@ -51,7 +51,7 @@ module.exports = args => {
 
         fs.writeFileSync(
             `./src/server/migrations/${camelCase(args[1])}.js`,
-            migration,
+            template,
             { flag: 'wx' }
         );
 
@@ -68,15 +68,15 @@ module.exports = args => {
     else if (args[0] === 'make:model') {
         if (!args[1]) gui.displayError('No Name Specified.');
 
-        let model = templates.MAKE_MODEL;
+        let template = templates.MAKE_MODEL;
 
         if (args[1].lastIndexOf('/') == -1) {
-            model = model.replace(
+            template = template.replace(
                 /%MODEL%/g,
                 camelCase(args[1], { pascalCase: true })
             );
         } else {
-            model = model.replace(
+            template = template.replace(
                 /%MODEL%/g,
                 camelCase(args[1].substr(args[1].lastIndexOf('/') + 1), {
                     pascalCase: true,
@@ -101,7 +101,7 @@ module.exports = args => {
             );
         }
 
-        fs.writeFileSync(`./src/app/models/${camelCase(args[1])}.js`, model, {
+        fs.writeFileSync(`./src/app/models/${camelCase(args[1])}.js`, template, {
             flag: 'wx',
         });
 
@@ -118,10 +118,24 @@ module.exports = args => {
     else if (args[0] === 'make:route') {
         if (!args[1]) gui.displayError('No Name Specified.');
 
-        let model = templates.MAKE_ROUTE;
-        model = model
+        let template = templates.MAKE_ROUTE;
+        template = template
             .replace(/%METHOD%/g, args[2].toUpperCase())
             .replace(/%PATH%/g, args[3].toLowerCase());
+
+        if (args[1].lastIndexOf('/') == -1) {
+            template = template.replace(
+                /%ROUTE%/g,
+                camelCase(args[1], { pascalCase: true })
+            );
+        } else {
+            template = template.replace(
+                /%ROUTE%/g,
+                camelCase(args[1].substr(args[1].lastIndexOf('/') + 1), {
+                    pascalCase: true,
+                })
+            );
+        }
 
         if (
             !fs.existsSync(
@@ -140,7 +154,7 @@ module.exports = args => {
             );
         }
 
-        fs.writeFileSync(`./src/app/routes/${camelCase(args[1])}.js`, model, {
+        fs.writeFileSync(`./src/app/routes/${camelCase(args[1])}.js`, template, {
             flag: 'wx',
         });
 
@@ -153,10 +167,25 @@ module.exports = args => {
         console.log(`${chalk.greenBright('Route')} Successfully Created!`);
     }
 
+    //make:module %NAME%
     else if (args[0] === 'make:module') {
         if (!args[1]) gui.displayError('No Name Specified.');
 
-        let model = templates.MAKE_MODULE;
+        let template = templates.MAKE_MODULE;
+
+        if (args[1].lastIndexOf('/') == -1) {
+            template = template.replace(
+                /%MODULE%/g,
+                camelCase(args[1], { pascalCase: true })
+            );
+        } else {
+            template = template.replace(
+                /%MODULE%/g,
+                camelCase(args[1].substr(args[1].lastIndexOf('/') + 1), {
+                    pascalCase: true,
+                })
+            );
+        }
 
         if (
             !fs.existsSync(
@@ -175,7 +204,7 @@ module.exports = args => {
             );
         }
 
-        fs.writeFileSync(`./src/server/modules/${camelCase(args[1])}.js`, model, {
+        fs.writeFileSync(`./src/server/modules/${camelCase(args[1])}.js`, template, {
             flag: 'wx',
         });
 
@@ -186,6 +215,55 @@ module.exports = args => {
         }).write();
 
         console.log(`${chalk.greenBright('Module')} Successfully Created!`);
+    }
+    //make:middleware %NAME%
+    else if (args[0] === 'make:middleware') {
+        if (!args[1]) gui.displayError('No Name Specified.');
+
+        let template = templates.MAKE_MIDDLEWARE;
+
+        if (args[1].lastIndexOf('/') == -1) {
+            template = template.replace(
+                /%MIDDLEWARE%/g,
+                camelCase(args[1], { pascalCase: true })
+            );
+        } else {
+            template = template.replace(
+                /%MIDDLEWARE%/g,
+                camelCase(args[1].substr(args[1].lastIndexOf('/') + 1), {
+                    pascalCase: true,
+                })
+            );
+        }
+
+        if (
+            !fs.existsSync(
+                `./src/app/middlewares/${camelCase(args[1]).substr(
+                    0,
+                    args[1].lastIndexOf('/')
+                )}`
+            )
+        ) {
+            fs.mkdirSync(
+                `./src/app/middlewares/${camelCase(args[1]).substr(
+                    0,
+                    args[1].lastIndexOf('/')
+                )}`,
+                { recursive: true }
+            );
+        }
+
+        fs.writeFileSync(`./src/app/middlewares/${camelCase(args[1])}.js`, template, {
+            flag: 'wx',
+        });
+
+        db.get('middlewares').push({
+            name: camelCase(args[1]),
+            path: `src/app/middlewares/${camelCase(args[1])}.js`,
+            createdAt: new Date()
+        }).write();
+
+        console.log(`${chalk.greenBright('Middleware')} Successfully Created!`);
     } else {
         gui.displayError('Component Invalid!');
     }

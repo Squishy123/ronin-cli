@@ -21,6 +21,9 @@ Supported Queries: all, migration, model, route`
         console.log(chalk.greenBright("Modules:"))
         db.get('modules').value().forEach(m => console.log(m));
 
+        console.log(chalk.greenBright("Middlewares:"))
+        db.get('middlewares').value().forEach(m => console.log(m));
+
         console.log(chalk.greenBright("Routes:"))
         db.get('routes').value().forEach(m => console.log(m));
     }

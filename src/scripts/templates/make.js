@@ -22,17 +22,27 @@ let %MODEL% = mongoose.model('%MODEL%', Schema);
 //Model Functions
 %MODEL%.getAll = () => %MODEL%.find({});
 
-export default %MODEL%`;
+export default %MODEL%;`;
 
 exports.MAKE_ROUTE = `
-export default {
+const %ROUTE% = {
     method: "%METHOD%",
     path: "%PATH%",
     handler: []
-}`;
+}
+
+export default %ROUTE%;`;
 
 exports.MAKE_MODULE = `
-export default () => {
+function %MODULE% () {
     //Module
 }
-`;
+
+export default %MODULE%;`;
+
+exports.MAKE_MIDDLEWARE = `
+function %MIDDLEWARE% (req, res) {
+    //Middleware
+}
+
+export default %MIDDLEWARE%;`;
