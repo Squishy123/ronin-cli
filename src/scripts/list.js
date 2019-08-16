@@ -6,11 +6,11 @@ module.exports = args => {
     if (args[0] == 'list') {
         console.log(
             `Usage: ronin list:[query]
-Supported Queries: all, migration, model, route`
+Supported Queries: all, migrations, models, modules, middlewares, routes`
         );
     }
 
-    if (args[0] == 'list:all') {
+    else if (args[0] == 'list:all') {
 
         console.log(chalk.greenBright("Models:"))
         db.get('models').value().forEach(m => console.log(m));
@@ -23,7 +23,29 @@ Supported Queries: all, migration, model, route`
 
         console.log(chalk.greenBright("Middlewares:"))
         db.get('middlewares').value().forEach(m => console.log(m));
+    }
 
+    else if (args[0] == 'list:migrations') {
+        console.log(chalk.greenBright("Migrations:"))
+        db.get('migrations').get('order').value().forEach(m => console.log(m));
+    }
+
+    else if (args[0] == 'list:models') {
+        console.log(chalk.greenBright("Models:"))
+        db.get('models').value().forEach(m => console.log(m));
+    }
+
+    else if (args[0] == 'list:modules') {
+        console.log(chalk.greenBright("Modules:"))
+        db.get('modules').value().forEach(m => console.log(m));
+    }
+
+    else if (args[0] == 'list:middlewares') {
+        console.log(chalk.greenBright("Middlewares:"))
+        db.get('middlewares').value().forEach(m => console.log(m));
+    }
+
+    else if (args[0] == 'list:routes') {
         console.log(chalk.greenBright("Routes:"))
         db.get('routes').value().forEach(m => console.log(m));
     }
