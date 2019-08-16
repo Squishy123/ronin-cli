@@ -32,16 +32,16 @@ Usage: ronin new [projectName]   OR   ronin new`);
 const LIST_HELP = chalk.whiteBright(`
 Usage: ronin list:[query]
 
-Supported Queries: all, migrations, models, modules, middlewares, routes`
-);
+Supported Queries: all, migrations, models, modules, middlewares, routes`);
 
 const DELETE_HELP = chalk.whiteBright(`
 Usage: ronin delete:[query]
 
-Supported Queries: select, migrations, models, modules, middlewares, routes`
-);
+Supported Queries: select, migrations, models, modules, middlewares, routes`);
 
-const DELETE_WARNING = chalk.whiteBright(`Deletions are permanent and cannot be reverted. Are you sure you want to continue?`);
+const DELETE_WARNING = chalk.whiteBright(
+    `Deletions are permanent and cannot be reverted. Are you sure you want to continue?`
+);
 
 module.exports = {
     displayBanner: () => {

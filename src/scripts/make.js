@@ -55,11 +55,14 @@ module.exports = args => {
             { flag: 'wx' }
         );
 
-        db.get('migrations').get('order').push({
-            name: camelCase(args[1]),
-            path: `src/server/migrations/${camelCase(args[1])}.js`,
-            createdAt: new Date()
-        }).write();
+        db.get('migrations')
+            .get('order')
+            .push({
+                name: camelCase(args[1]),
+                path: `src/server/migrations/${camelCase(args[1])}.js`,
+                createdAt: new Date(),
+            })
+            .write();
 
         console.log(`${chalk.greenBright('Migration')} Successfully Created!`);
     }
@@ -101,15 +104,21 @@ module.exports = args => {
             );
         }
 
-        fs.writeFileSync(`./src/app/models/${camelCase(args[1])}.js`, template, {
-            flag: 'wx',
-        });
+        fs.writeFileSync(
+            `./src/app/models/${camelCase(args[1])}.js`,
+            template,
+            {
+                flag: 'wx',
+            }
+        );
 
-        db.get('models').push({
-            name: camelCase(args[1]),
-            path: `src/app/models/${camelCase(args[1])}.js`,
-            createdAt: new Date()
-        }).write();
+        db.get('models')
+            .push({
+                name: camelCase(args[1]),
+                path: `src/app/models/${camelCase(args[1])}.js`,
+                createdAt: new Date(),
+            })
+            .write();
 
         console.log(`${chalk.greenBright('Model')} Successfully Created!`);
     }
@@ -154,15 +163,21 @@ module.exports = args => {
             );
         }
 
-        fs.writeFileSync(`./src/app/routes/${camelCase(args[1])}.js`, template, {
-            flag: 'wx',
-        });
+        fs.writeFileSync(
+            `./src/app/routes/${camelCase(args[1])}.js`,
+            template,
+            {
+                flag: 'wx',
+            }
+        );
 
-        db.get('routes').push({
-            name: camelCase(args[1]),
-            path: `src/app/routes/${camelCase(args[1])}.js`,
-            createdAt: new Date()
-        }).write();
+        db.get('routes')
+            .push({
+                name: camelCase(args[1]),
+                path: `src/app/routes/${camelCase(args[1])}.js`,
+                createdAt: new Date(),
+            })
+            .write();
 
         console.log(`${chalk.greenBright('Route')} Successfully Created!`);
     }
@@ -204,15 +219,21 @@ module.exports = args => {
             );
         }
 
-        fs.writeFileSync(`./src/server/modules/${camelCase(args[1])}.js`, template, {
-            flag: 'wx',
-        });
+        fs.writeFileSync(
+            `./src/server/modules/${camelCase(args[1])}.js`,
+            template,
+            {
+                flag: 'wx',
+            }
+        );
 
-        db.get('modules').push({
-            name: camelCase(args[1]),
-            path: `src/server/modules/${camelCase(args[1])}.js`,
-            createdAt: new Date()
-        }).write();
+        db.get('modules')
+            .push({
+                name: camelCase(args[1]),
+                path: `src/server/modules/${camelCase(args[1])}.js`,
+                createdAt: new Date(),
+            })
+            .write();
 
         console.log(`${chalk.greenBright('Module')} Successfully Created!`);
     }
@@ -253,15 +274,21 @@ module.exports = args => {
             );
         }
 
-        fs.writeFileSync(`./src/app/middlewares/${camelCase(args[1])}.js`, template, {
-            flag: 'wx',
-        });
+        fs.writeFileSync(
+            `./src/app/middlewares/${camelCase(args[1])}.js`,
+            template,
+            {
+                flag: 'wx',
+            }
+        );
 
-        db.get('middlewares').push({
-            name: camelCase(args[1]),
-            path: `src/app/middlewares/${camelCase(args[1])}.js`,
-            createdAt: new Date()
-        }).write();
+        db.get('middlewares')
+            .push({
+                name: camelCase(args[1]),
+                path: `src/app/middlewares/${camelCase(args[1])}.js`,
+                createdAt: new Date(),
+            })
+            .write();
 
         console.log(`${chalk.greenBright('Middleware')} Successfully Created!`);
     } else {
