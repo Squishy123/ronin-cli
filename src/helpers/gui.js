@@ -29,6 +29,20 @@ Supported Commands: migration, model, route`
 const INIT_HELP = chalk.whiteBright(`
 Usage: ronin new [projectName]   OR   ronin new`);
 
+const LIST_HELP = chalk.whiteBright(`
+Usage: ronin list:[query]
+
+Supported Queries: all, migrations, models, modules, middlewares, routes`
+);
+
+const DELETE_HELP = chalk.whiteBright(`
+Usage: ronin delete:[query]
+
+Supported Queries: select, migrations, models, modules, middlewares, routes`
+);
+
+const DELETE_WARNING = chalk.whiteBright(`Deletions are permanent and cannot be reverted. Are you sure you want to continue?`);
+
 module.exports = {
     displayBanner: () => {
         console.log(BANNER);
@@ -41,6 +55,15 @@ module.exports = {
     },
     displayInitHelp: () => {
         console.log(BANNER + VERSION + INIT_HELP);
+    },
+    displayListHelp: () => {
+        console.log(BANNER + VERSION + LIST_HELP);
+    },
+    displayDeleteHelp: () => {
+        console.log(BANNER + VERSION + DELETE_HELP);
+    },
+    displayDeleteWarning: () => {
+        console.log(DELETE_WARNING);
     },
     displayError: err => {
         console.error(`${chalk.redBright('Error:')} ${err}`);

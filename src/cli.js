@@ -2,6 +2,7 @@
 const init = require('./scripts/init');
 const make = require('./scripts/make');
 const list = require('./scripts/list');
+const deleteC = require('./scripts/delete');
 
 const gui = require('./helpers/gui');
 
@@ -18,5 +19,7 @@ const [, , ...args] = process.argv;
         make(args);
     } else if (args[0].includes('list')) {
         list(args);
+    } else if (args[0].includes('delete')) {
+        deleteC(args);
     }
 })();

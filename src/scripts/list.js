@@ -1,13 +1,11 @@
 const db = require('../helpers/db');
 const chalk = require('chalk');
+const gui = require('../helpers/gui');
 
 module.exports = args => {
     //null
     if (args[0] == 'list') {
-        console.log(
-            `Usage: ronin list:[query]
-Supported Queries: all, migrations, models, modules, middlewares, routes`
-        );
+        gui.displayListHelp();
     }
 
     else if (args[0] == 'list:all') {
