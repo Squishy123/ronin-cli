@@ -21,9 +21,8 @@ module.exports = async args => {
                     .then(answers => answers.projectName);
             }
             //clone repo
-            //await git().silent(true).clone('https://github.com/Squishy123/ronin.git', `./${name}`);
             await execStream(
-                `git clone https://github.com/Squishy123/ronin.git ./${name} --progress`
+                `git clone https://github.com/Squishy123/ronin-starter.git ./${name} --progress`
             );
 
             //install dependencies
