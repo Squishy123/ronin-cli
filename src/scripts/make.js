@@ -191,14 +191,12 @@ module.exports = args => {
         if (args[1].lastIndexOf('/') == -1) {
             template = template.replace(
                 /%MODULE%/g,
-                camelCase(args[1], { pascalCase: true })
+                camelCase(args[1])
             );
         } else {
             template = template.replace(
                 /%MODULE%/g,
-                camelCase(args[1].substr(args[1].lastIndexOf('/') + 1), {
-                    pascalCase: true,
-                })
+                camelCase(args[1].substr(args[1].lastIndexOf('/') + 1))
             );
         }
 
