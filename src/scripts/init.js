@@ -22,7 +22,7 @@ module.exports = async args => {
             }
             //clone repo
             await execStream(
-                `git clone https://github.com/Squishy123/ronin-starter.git ./${name} --progress`
+                `git clone --depth 1 https://github.com/Squishy123/ronin-starter.git ./${name} --progress`
             );
 
             //install dependencies
