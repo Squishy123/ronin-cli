@@ -33,7 +33,7 @@ module.exports = async args => {
 Ronin Project Created Successfully!
 cd ${name}
 and run 
-ronin start`)
+yarn dev`)
             );
         } else {
             gui.displayInitHelp();
