@@ -41,10 +41,10 @@ Supported Queries: select, migrations, models, modules, middlewares, routes
 ## Docs
 ### Take a look at the documentation
 ## - [General Overview](docs/GENERAL.md)
-## - [Getting Started with Development](docs/development/getting-started)
+## - [Getting Started with Development](docs/development/getting-started.md)
 
 ## Development
-### Looking to Contribute? Check out the [development docs](docs/development/getting-started)!
+### Looking to Contribute? Check out the [development docs](docs/development/getting-started.md)!
 
 
 # 🚧 UNDER CONSTRUCTION 🚧
