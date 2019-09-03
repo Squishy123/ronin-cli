@@ -23,6 +23,8 @@ jobs:
         npm run build --if-present
         npm test
         npm run format
+        git config --global user.email ""
+        git config --global user.name ""
         git add .
         git commit -m "Linted Changes"
         git push
