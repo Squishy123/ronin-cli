@@ -1,4 +1,4 @@
-name: Node CI
+name: Default JS Linter
 
 on: [push]
 
@@ -17,14 +17,18 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+      env: 
+        bot_name: ${{ secrets.BOT_NAME }}
+        bot_email: ${{ secrets.BOT_EMAIL }}
+        bot_password: ${{ secrets.BOT_PASSWORD }}
     - name: npm install, build, and test
       run: |
         npm install
         npm run build --if-present
         npm test
         npm run format
-        git config --global user.email ""
-        git config --global user.name ""
+        git config --global user.email $bot_name
+        git config --global user.name $bot_name
         git add .
         git commit -m "Linted Changes"
         git push
