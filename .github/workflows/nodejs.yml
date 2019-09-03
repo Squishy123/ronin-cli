@@ -21,12 +21,13 @@ jobs:
         bot_name: ${{ secrets.BOT_NAME }}
         bot_email: ${{ secrets.BOT_EMAIL }}
         bot_password: ${{ secrets.BOT_PASSWORD }}
-    - name: npm install, build, and test
+    - name: npm install, build, and test and lint
       run: |
         npm install
         npm run build --if-present
         npm test
         npm run format
+        echo $bot_name
         git config --global user.email $bot_name
         git config --global user.name $bot_name
         git add .
