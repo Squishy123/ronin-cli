@@ -21,9 +21,9 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 3. Install the distro of your choice from the microsoft store: 
 
 Here is a list of the tested distros and their support level.
-| Distro | Support |
+|Distro|Support|
 | - | - |
-|[Ubuntu 18.04](https://www.microsoft.com/en-ca/p/ubuntu-1804-lts/9n9tngvndl3q?rtc=1&activetab=pivot:overviewtab) | Supported 
+|[Ubuntu 18.04](https://www.microsoft.com/en-ca/p/ubuntu-1804-lts/9n9tngvndl3q?rtc=1&activetab=pivot:overviewtab)|Supported|
 
 #### Install Docker Desktop on Windows
 1. Download and install [Docker Desktop](https://www.docker.com/products/docker-desktop) for Windows.
