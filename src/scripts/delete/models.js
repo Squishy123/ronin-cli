@@ -5,7 +5,6 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 
 module.exports = async args => {
-    console.log(args);
     if (args[0] == 'delete:models') {
         let data = {
             models: db
