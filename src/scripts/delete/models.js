@@ -5,6 +5,7 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 
 module.exports = async args => {
+    console.log(args);
     if (args[0] == 'delete:models') {
         let data = {
             models: db
@@ -74,7 +75,7 @@ module.exports = async args => {
             .forEach((e, i) => {
                 db.unset(`migrations.${i}.value`).write();
             });
-
+      
         console.log(
             chalk.greenBright('Deletions') + ' Completed Successfully!'
         );
