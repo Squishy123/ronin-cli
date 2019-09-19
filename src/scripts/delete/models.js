@@ -32,7 +32,9 @@ module.exports = async args => {
                     ],
                 },
             ])
-            .then(answers => answers.deletion)
+            .then(answers => answers.deletions);
+
+        console.log(selected);
 
         let confirmData = selected.reduce((acc, val) => {
             return acc + `\n${data[val.category][val.index].name}`;
@@ -51,15 +53,29 @@ module.exports = async args => {
                 let e = data[val.category][val.index];
                 console.log(`Deleting ${e.path}`);
                 fs.unlinkSync(e.path);
+
+                db.get(val.category)
+                    .remove(e)
+                    .write();
             });
         }
 
-        db.get('models')
+        //cleanup
+        ['models', 'modules', 'middlewares', 'routes'].forEach(q => {
+            db.get(q)
+                .value()
+                .forEach((e, i) => {
+                    db.unset(`${q}.${i}.value`).write();
+                });
+        });
+
+        db.get('migrations')
+            .get('order')
             .value()
             .forEach((e, i) => {
-                db.unset(`${models}.${i}.value`).write();
+                db.unset(`migrations.${i}.value`).write();
             });
-
+      
         console.log(
             chalk.greenBright('Deletions') + ' Completed Successfully!'
         );
