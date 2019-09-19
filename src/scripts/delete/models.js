@@ -15,11 +15,11 @@ module.exports = async args => {
                     Object.assign(m, {
                         value: {
                             index: i,
-                            category: 'models'
+                            category: 'models',
                         },
                     })
-                )
-        }
+                ),
+        };
         let selected = await inquirer
             .prompt([
                 {
@@ -75,7 +75,7 @@ module.exports = async args => {
             .forEach((e, i) => {
                 db.unset(`migrations.${i}.value`).write();
             });
-      
+
         console.log(
             chalk.greenBright('Deletions') + ' Completed Successfully!'
         );

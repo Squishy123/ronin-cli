@@ -189,10 +189,7 @@ module.exports = args => {
         let template = templates.MAKE_MODULE;
 
         if (args[1].lastIndexOf('/') == -1) {
-            template = template.replace(
-                /%MODULE%/g,
-                camelCase(args[1])
-            );
+            template = template.replace(/%MODULE%/g, camelCase(args[1]));
         } else {
             template = template.replace(
                 /%MODULE%/g,
@@ -242,10 +239,7 @@ module.exports = args => {
         let template = templates.MAKE_MIDDLEWARE;
 
         if (args[1].lastIndexOf('/') == -1) {
-            template = template.replace(
-                /%MIDDLEWARE%/g,
-                camelCase(args[1])
-            );
+            template = template.replace(/%MIDDLEWARE%/g, camelCase(args[1]));
         } else {
             template = template.replace(
                 /%MIDDLEWARE%/g,
