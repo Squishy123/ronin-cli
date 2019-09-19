@@ -1,8 +1,10 @@
-const db = require('../helpers/db');
+const db = require('../../helpers/db');
 const chalk = require('chalk');
-const gui = require('../helpers/gui');
+const gui = require('../../helpers/gui');
 const inquirer = require('inquirer');
 const fs = require('fs');
+
+const deleteModels = require('./models');
 
 module.exports = async args => {
     //null
@@ -140,5 +142,7 @@ module.exports = async args => {
         console.log(
             chalk.greenBright('Deletions') + ' Completed Successfully!'
         );
+    } else if (args[0] == 'delete:models') {
+        await deleteModels(args);
     }
 };

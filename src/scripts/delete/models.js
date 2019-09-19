@@ -19,49 +19,64 @@ module.exports = async args => {
                     })
                 )
         }
-    }
+        let selected = await inquirer
+            .prompt([
+                {
+                    type: 'checkbox',
+                    message: 'Select Deletions',
+                    name: 'deletions',
+                    choices: [
+                        new inquirer.Separator(' = Models = '),
+                        ...data.models,
+                    ],
+                },
+            ])
+            .then(answers => answers.deletions);
 
-    let selected = await inquirer
-        .prompt([
-            {
-                type: 'checkbox',
-                message: 'Select Deletions',
-                name: 'deletions',
-                choices: [
-                    new inquirer.Separator(' = Models = '),
-                    ...data.models,
-                ],
-            },
-        ])
-        .then(answers => answers.deletion)
+        console.log(selected);
 
-    let confirmData = selected.reduce((acc, val) => {
-        return acc + `\n${data[val.category][val.index].name}`;
-    }, '');
+        let confirmData = selected.reduce((acc, val) => {
+            return acc + `\n${data[val.category][val.index].name}`;
+        }, '');
 
-    let confirm = await inquirer
-        .prompt({
-            name: 'confirm',
-            type: 'confirm',
-            message: 'Confirm Delections:' + confirmData + '\n',
-        })
-        .then(answrs => answers.confirm);
-    
-    if (confirm) {
-        selected.forEach(val => {
-            let e = data[val.category][val.index];
-            console.log(`Deleting ${e.path}`);
-            fs.unlinkSync(e.path);
+        let confirm = await inquirer
+            .prompt({
+                name: 'confirm',
+                type: 'confirm',
+                message: 'Confirm Delections:' + confirmData + '\n',
+            })
+            .then(answers => answers.confirm);
+
+        if (confirm) {
+            selected.forEach(val => {
+                let e = data[val.category][val.index];
+                console.log(`Deleting ${e.path}`);
+                fs.unlinkSync(e.path);
+
+                db.get(val.category)
+                    .remove(e)
+                    .write();
+            });
+        }
+
+        //cleanup
+        ['models', 'modules', 'middlewares', 'routes'].forEach(q => {
+            db.get(q)
+                .value()
+                .forEach((e, i) => {
+                    db.unset(`${q}.${i}.value`).write();
+                });
         });
+
+        db.get('migrations')
+            .get('order')
+            .value()
+            .forEach((e, i) => {
+                db.unset(`migrations.${i}.value`).write();
+            });
+
+        console.log(
+            chalk.greenBright('Deletions') + ' Completed Successfully!'
+        );
     }
-
-    db.get('models')
-        .value()
-        .forEach((e, i) => {
-            db.unset(`${models}.${i}.value`).write();
-        });
-
-    console.log(
-        chalk.greenBright('Deletions') + ' Completed Successfully!'
-    );
 };
