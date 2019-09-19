@@ -2,7 +2,7 @@
 const init = require('./scripts/init');
 const make = require('./scripts/make');
 const list = require('./scripts/list');
-const deleteC = require('./scripts/delete');
+const deleteC = require('./scripts/delete/main');
 
 const gui = require('./helpers/gui');
 
