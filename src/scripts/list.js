@@ -1,8 +1,8 @@
-const db = require('../helpers/db');
 const chalk = require('chalk');
 const gui = require('../helpers/gui');
 
 module.exports = args => {
+    const db = require('../helpers/db');
     //null
     if (args[0] == 'list') {
         gui.displayListHelp();

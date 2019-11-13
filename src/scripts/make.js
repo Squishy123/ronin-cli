@@ -4,9 +4,9 @@ const camelCase = require('camelcase');
 const chalk = require('chalk');
 
 const gui = require('../helpers/gui');
-const db = require('../helpers/db');
 
 module.exports = args => {
+    const db = require('../helpers/db');
     //null
     if (args[0] === 'make') {
         gui.displayMakeHelp();

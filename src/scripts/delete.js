@@ -1,10 +1,10 @@
-const db = require('../helpers/db');
 const chalk = require('chalk');
 const gui = require('../helpers/gui');
 const inquirer = require('inquirer');
 const fs = require('fs');
 
 module.exports = async args => {
+    const db = require('../helpers/db');
     //null
     if (args[0] == 'delete') {
         gui.displayDeleteHelp();
