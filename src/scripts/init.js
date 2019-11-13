@@ -26,14 +26,12 @@ module.exports = async args => {
             );
 
             //install dependencies
-            await execStream(`cd ${name} && yarn`);
+            await execStream(`cd ${name} && npm install`);
 
             console.log(
                 chalk.white(`
 Ronin Project Created Successfully!
-cd ${name}
-and run 
-yarn dev`)
+cd ${name} && npm run dev`)
             );
         } else {
             gui.displayInitHelp();
