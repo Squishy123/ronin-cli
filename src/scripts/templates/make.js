@@ -14,13 +14,29 @@ export default class %MIGRATION% {
 exports.MAKE_MODEL = `
 import mongoose from 'mongoose';
 
-//Defined Schema
-const Schema = mongoose.Schema({});
+//SCHEMA
+const %MODEL%Schema = mongoose.Schema({});
 
-let %MODEL% = mongoose.model('%MODEL%', Schema);
+//STATICS
+//Get a list of all %MODEL%'s that satisfy the query(default=null)
+%MODEL%Schema.statics.getAll = async function(query) {
+    return await this.find(query);
+} 
 
-//Model Functions
-%MODEL%.getAll = () => %MODEL%.find({});
+//Get a single %MODEL% that satisfies the query
+%MODEL%Schema.statics.getOne = async function(query) {
+    return await this.findOne(query);
+}
+
+//Update a single %MODEL% that satisfies the filter with doc
+%MODEL%Schema.statics.updateOne = async function(filter, doc) {
+    let instance = await this.findOne(filter);
+    Object.assign(instance, doc);
+    await instance.save();
+    return instance;
+}
+
+let %MODEL% = mongoose.model('%MODEL%', %MODEL%Schema);
 
 export default %MODEL%;`;
 
