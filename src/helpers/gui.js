@@ -23,7 +23,7 @@ const MAKE_HELP = chalk.whiteBright(
     `
 Usage: ronin make:[component] [args]
 
-Supported Commands: migration, model, route`
+Supported Commands: migration, middleware, model, route`
 );
 
 const INIT_HELP = chalk.whiteBright(`
