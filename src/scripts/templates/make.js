@@ -43,6 +43,7 @@ export default %MODEL%;`;
 exports.MAKE_ROUTE = `
 const %ROUTE% = {
     method: "%METHOD%",
+    enabled: true,
     path: "%PATH%",
     handler: []
 }

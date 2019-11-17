@@ -14,7 +14,7 @@ module.exports = args => {
 
     //make:migration %NAME%
     else if (args[0] === 'make:migration') {
-        if (!args[1]) gui.displayError('No Name Specified.');
+        if (!args[1]) return gui.displayError('No Name Specified.');
 
         let template = templates.MAKE_MIGRATION;
 
@@ -69,7 +69,7 @@ module.exports = args => {
 
     //make:model %NAME%
     else if (args[0] === 'make:model') {
-        if (!args[1]) gui.displayError('No Name Specified.');
+        if (!args[1]) return gui.displayError('No Name Specified.');
 
         let template = templates.MAKE_MODEL;
 
@@ -125,7 +125,7 @@ module.exports = args => {
 
     //make:route %NAME% %METHOD% %PATH
     else if (args[0] === 'make:route') {
-        if (!args[1]) gui.displayError('No Name Specified.');
+        if (!args[1]) return gui.displayError('No Name Specified.');
 
         let template = templates.MAKE_ROUTE;
         template = template
@@ -184,7 +184,7 @@ module.exports = args => {
 
     //make:module %NAME%
     else if (args[0] === 'make:module') {
-        if (!args[1]) gui.displayError('No Name Specified.');
+        if (!args[1]) return gui.displayError('No Name Specified.');
 
         let template = templates.MAKE_MODULE;
 
@@ -234,7 +234,8 @@ module.exports = args => {
     }
     //make:middleware %NAME%
     else if (args[0] === 'make:middleware') {
-        if (!args[1]) gui.displayError('No Name Specified.');
+        if (!args[1]) 
+            return gui.displayError('No Name Specified.');
 
         let template = templates.MAKE_MIDDLEWARE;
 
@@ -282,6 +283,6 @@ module.exports = args => {
 
         console.log(`${chalk.greenBright('Middleware')} Successfully Created!`);
     } else {
-        gui.displayError('Component Invalid!');
+        return gui.displayError('Component Invalid!');
     }
 };
