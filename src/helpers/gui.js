@@ -23,15 +23,16 @@ const MAKE_HELP = chalk.whiteBright(
     `
 Usage: ronin make:[component] [args]
 
-Supported Commands: migration, middleware, model, route
+Supported Commands: migration, middleware, model, route, custom
 
 Example Syntax:
 
 ronin make:migration %NAME%
 ronin make:middleware %NAME%
 ronin make:model %NAME%
-ronin make:route %NAME% %METHOD% %PATH%`
-);
+ronin make:route %NAME% %METHOD% %PATH%
+ronin make:custom %NAME%
+`);
 
 const INIT_HELP = chalk.whiteBright(`
 Usage: ronin new [projectName]   OR   ronin new`);

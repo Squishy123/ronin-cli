@@ -63,3 +63,10 @@ function %MIDDLEWARE% (req, res) {
 }
 
 export default %MIDDLEWARE%;`;
+
+exports.MAKE_CUSTOM = `
+function %CUSTOM% (req, res) {
+    //Custom
+}
+
+`

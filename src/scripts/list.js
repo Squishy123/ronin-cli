@@ -27,6 +27,10 @@ module.exports = args => {
         db.get('middlewares')
             .value()
             .forEach(m => console.log(m));
+        console.log(chalk.greenBright('Customs:'));
+        db.get('customs')
+            .value()
+            .forEach(m => console.log(m));
     } else if (args[0] == 'list:migrations') {
         console.log(chalk.greenBright('Migrations:'));
         db.get('migrations')
@@ -51,6 +55,11 @@ module.exports = args => {
     } else if (args[0] == 'list:routes') {
         console.log(chalk.greenBright('Routes:'));
         db.get('routes')
+            .value()
+            .forEach(m => console.log(m));
+    } else if (args[0] == 'list:customs') {
+        console.log(chalk.greenBright('Customs:'));
+        db.get('customs')
             .value()
             .forEach(m => console.log(m));
     }

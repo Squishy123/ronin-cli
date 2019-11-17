@@ -234,7 +234,7 @@ module.exports = args => {
     }
     //make:middleware %NAME%
     else if (args[0] === 'make:middleware') {
-        if (!args[1]) 
+        if (!args[1])
             return gui.displayError('No Name Specified.');
 
         let template = templates.MAKE_MIDDLEWARE;
@@ -282,6 +282,54 @@ module.exports = args => {
             .write();
 
         console.log(`${chalk.greenBright('Middleware')} Successfully Created!`);
+    } else if (args[0] === 'make:custom') {
+        if (!args[1]) return gui.displayError('No Name Specified.');
+
+        let template = templates.MAKE_CUSTOM;
+
+        if (args[1].lastIndexOf('/') == -1) {
+            template = template.replace(/%CUSTOM%/g, camelCase(args[1]));
+        } else {
+            template = template.replace(
+                /%CUSTOM%/g,
+                camelCase(args[1].substr(args[1].lastIndexOf('/') + 1))
+            );
+        }
+
+        if (
+            !fs.existsSync(
+                `./src/app/customs/${camelCase(args[1]).substr(
+                    0,
+                    args[1].lastIndexOf('/')
+                )}`
+            )
+        ) {
+            fs.mkdirSync(
+                `./src/app/customs/${camelCase(args[1]).substr(
+                    0,
+                    args[1].lastIndexOf('/')
+                )}`,
+                { recursive: true }
+            );
+        }
+
+        fs.writeFileSync(
+            `./src/app/customs/${camelCase(args[1])}.js`,
+            template,
+            {
+                flag: 'wx',
+            }
+        );
+
+        db.get('customs')
+            .push({
+                name: camelCase(args[1]),
+                path: `src/app/customs/${camelCase(args[1])}.js`,
+                createdAt: new Date(),
+            })
+            .write();
+
+        console.log(`${chalk.greenBright('Custom')} Successfully Created!`);
     } else {
         return gui.displayError('Component Invalid!');
     }

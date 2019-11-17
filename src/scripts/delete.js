@@ -66,6 +66,17 @@ module.exports = async args => {
                         },
                     })
                 ),
+            customs: db
+                .get('customs')
+                .value()
+                .map((m, i) =>
+                    Object.assign(m, {
+                        value: {
+                            index: i,
+                            category: 'customs',
+                        },
+                    })
+                ),
         };
 
         let selected = await inquirer
@@ -85,6 +96,8 @@ module.exports = async args => {
                         ...data.middlewares,
                         new inquirer.Separator(' = Routes = '),
                         ...data.routes,
+                        new inquirer.Separator(' = Customs = '),
+                        ...data.customs,
                     ],
                 },
             ])
@@ -121,7 +134,7 @@ module.exports = async args => {
             });
 
             //cleanup
-            ['models', 'modules', 'middlewares', 'routes'].forEach(q => {
+            ['models', 'modules', 'middlewares', 'routes', 'customs'].forEach(q => {
                 db.get(q)
                     .value()
                     .forEach((e, i) => {
