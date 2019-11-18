@@ -59,8 +59,9 @@ const Helloworld = {
     }]
 }
 ```
+
 Property | Description
-- | -
+-|-
 method | HTTP Method (POST, GET, PUT, DELETE) 
 path  | The URL string
 enabled | boolean value for whether or not the route should be loaded
