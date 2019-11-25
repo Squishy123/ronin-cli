@@ -5,6 +5,21 @@ const chalk = require('chalk');
 
 const gui = require('../helpers/gui');
 
+//write a template to file given templatestring, urlprefix and params
+function writeTemplate(template, urlPrefix, templateMaps, params) {
+    let temp = template;
+    Object.keys(templateMaps).forEach(m => {
+        if (!params[m]) {
+            gui.displayError(`No ${m} Specified`);
+        } else {
+            temp = temp.replace(`
+                /${m}/g`,
+                camelCase(params[m], { pascalCase: true })
+            );
+        }
+    });
+}
+
 module.exports = args => {
     const db = require('../helpers/db');
     //null
