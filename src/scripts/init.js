@@ -2,6 +2,8 @@ const inquirer = require('inquirer');
 const { execStream } = require('../helpers/async-node');
 const chalk = require('chalk');
 
+const fs = require('fs-extra');
+
 const gui = require('../helpers/gui');
 
 module.exports = async args => {
@@ -24,6 +26,10 @@ module.exports = async args => {
             await execStream(
                 `git clone --depth 1 https://github.com/Squishy123/ronin-starter.git ./${name} --progress`
             );
+
+            //wipe and redo git
+            await fs.remove(`${name}/.git`);
+            await execStream(`cd ${name} && git init && git add -A && git commit -m "Ronin Project Init"`);
 
             //install dependencies
             await execStream(`cd ${name} && npm install`);

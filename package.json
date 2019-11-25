@@ -1,6 +1,6 @@
 {
   "name": "ronin-cli",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "CLI Tools for Development with the Ronin Framework",
   "keywords": [
     "js",
@@ -16,6 +16,7 @@
   "dependencies": {
     "camelcase": "^5.3.1",
     "chalk": "^2.4.2",
+    "fs-extra": "^8.1.0",
     "inquirer": "^6.5.0",
     "lowdb": "^1.0.0",
     "simple-git": "^1.124.0"

@@ -10,7 +10,7 @@ const BANNER = chalk.redBright(
 `
 );
 
-const VERSION = chalk.redBright(`Ronin CLI `) + chalk.bgRed(`v0.0.6b`);
+const VERSION = chalk.redBright(`Ronin CLI `) + chalk.bgRed(`v0.0.7b`);
 
 const GENERAL_HELP = chalk.whiteBright(
     `
