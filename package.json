@@ -19,7 +19,7 @@
     "fs-extra": "^8.1.0",
     "inquirer": "^6.5.0",
     "lowdb": "^1.0.0",
-    "simple-git": "^1.124.0"
+    "simple-git": "^3.16.0"
   },
   "bin": {
     "ronin": "./src/cli.js"
